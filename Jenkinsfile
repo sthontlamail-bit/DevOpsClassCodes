@@ -1,27 +1,40 @@
-pipeline {
-    agent any
-    tools {
-        maven 'maven399'
-    }
+pipeline
+{
+	agent any  
+	stages
+	{
+		stage('Code Checkout')
+		{
+			steps
+			{
+				git 'https://github.com/sthontlamail-bit/DevOpsClassCodes.git'
+			}
+		}
+		
+		stage('Code Compile')
+		{
+			steps
+			{    
 
-    stages {
+				sh 'mvn compile'
+			}
+		}
 
-        stage('Compile') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
+		stage('Code Test')
+		{
+			steps
+			{
+				sh 'mvn test'
+			}
+		}
 
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-    }
+		stage('Code package')
+		{
+			steps
+			{
+				sh 'mvn package'
+			}
+		}
+     }
 }
+
