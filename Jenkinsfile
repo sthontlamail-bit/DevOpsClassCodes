@@ -2,6 +2,8 @@ pipeline
 {
 	agent any  
 	stages
+	tools {
+		maven 'maven399'
 	{
 		stage('Code Checkout')
 		{
