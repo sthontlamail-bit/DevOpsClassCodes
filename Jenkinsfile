@@ -1,9 +1,11 @@
 pipeline
 {
 	agent any  
-	stages
-	tools {
+		tools {
 		maven 'maven399'
+		}
+	stages
+
 	{
 		stage('Code Checkout')
 		{
